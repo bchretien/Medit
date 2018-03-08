@@ -4,15 +4,6 @@ set(CMAKE_BUILD_TYPE  "Release")
 set(CMAKE_CXX_FLAGS   "-w -O3")
 set(CMAKE_C_FLAGS   "-w -O3")
 add_definitions("-w")
-set(CMAKE_MACOSX_RPATH 1)
-set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
-set(CMAKE_INSTALL_RPATH "$ENV{HOME}/lib")
-set(CMAKE_INSTALL_NAME_DIR "$ENV{HOME}/lib")
-#INCLUDE_DIRECTORIES(  "$ENV{HOME}/include")
-#LINK_DIRECTORIES(     "$ENV{HOME}/lib")
-#SET(CMAKE_SKIP_BUILD_RPATH  TRUE)
-
-
 
 macro(DATE RESULT)
     if(WIN32)
@@ -80,8 +71,8 @@ elseif(UNIX)
 	set(GL_LIBS ${OPENGL_LIBRARIES} ${GLUT_LIBRARY} )
 
 	target_link_libraries( Medit3D ${GL_LIBS})
-	INSTALL(               TARGETS Medit3D LIBRARY  DESTINATION "$ENV{HOME}/lib")
-	INSTALL(               FILES ${hea} DESTINATION "$ENV{HOME}/include")
+	INSTALL(               TARGETS Medit3D LIBRARY  DESTINATION "lib")
+	INSTALL(               FILES ${hea} DESTINATION "include")
 
 ENDIF()
 
@@ -91,4 +82,4 @@ target_link_libraries( Medit3D ${GL_LIBS})
 project(medit)
 add_executable(        medit src/medit.c)
 target_link_libraries( medit Medit3D)# ${GL_LIBS})
-INSTALL(               TARGETS medit RUNTIME DESTINATION "$ENV{HOME}/bin")
+INSTALL(               TARGETS medit RUNTIME DESTINATION "bin")
